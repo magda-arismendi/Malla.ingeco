@@ -1,102 +1,104 @@
 const malla = {
   "1er Semestre": [
-    "Introducción a la Economía",
-    "Métodos Matemáticos I",
-    "Gestión y Empresa",
-    "Inglés I",
-    "Int. al Pensamiento Económico y Político"
+    { nombre: "Introducción a la Economía" },
+    { nombre: "Métodos Matemáticos I" },
+    { nombre: "Gestión y Empresa" },
+    { nombre: "Inglés I" },
+    { nombre: "Int. al Pensamiento Económico y Político" }
   ],
   "2do Semestre": [
-    "Métodos Matemáticos II",
-    "Inglés II",
-    "Introducción a la Microeconomía",
-    "Contabilidad",
-    "Comunicación I"
+    { nombre: "Métodos Matemáticos II", requisitos: ["Métodos Matemáticos I"] },
+    { nombre: "Inglés II", requisitos: ["Inglés I"] },
+    { nombre: "Introducción a la Microeconomía", requisitos: ["Introducción a la Economía"] },
+    { nombre: "Contabilidad" },
+    { nombre: "Comunicación I" }
   ],
   "3er Semestre": [
-    "Introducción a la Macroeconomía",
-    "Métodos Matemáticos III",
-    "Inglés III",
-    "Aplicaciones de Manejo de Datos",
-    "Introducción a la Gestión de Personas"
+    { nombre: "Introducción a la Macroeconomía", requisitos: ["Introducción a la Economía"] },
+    { nombre: "Métodos Matemáticos III", requisitos: ["Métodos Matemáticos II"] },
+    { nombre: "Inglés III", requisitos: ["Inglés II"] },
+    { nombre: "Aplicaciones de Manejo de Datos" },
+    { nombre: "Introducción a la Gestión de Personas" }
   ],
   "4to Semestre": [
-    "Microeconomía I",
-    "Macroeconomía I",
-    "Métodos Cuantitativos I",
-    "Historia Económica",
-    "Inglés IV",
-    "Comunicación II"
+    { nombre: "Microeconomía I", requisitos: ["Introducción a la Microeconomía"] },
+    { nombre: "Macroeconomía I", requisitos: ["Introducción a la Macroeconomía"] },
+    { nombre: "Métodos Cuantitativos I", requisitos: ["Métodos Matemáticos III"] },
+    { nombre: "Historia Económica" },
+    { nombre: "Inglés IV", requisitos: ["Inglés III"] },
+    { nombre: "Comunicación II", requisitos: ["Comunicación I"] }
   ],
   "5to Semestre": [
-    "Estadística I",
-    "Estadística II",
-    "Economía Aplicada",
-    "Métodos Matemáticos IV",
-    "Introducción al Marketing",
-    "Introducción a las Finanzas"
+    { nombre: "Estadística I", requisitos: ["Métodos Cuantitativos I"] },
+    { nombre: "Estadística II", requisitos: ["Estadística I"] },
+    { nombre: "Economía Aplicada", requisitos: ["Microeconomía I"] },
+    { nombre: "Métodos Matemáticos IV", requisitos: ["Métodos Matemáticos III"] },
+    { nombre: "Introducción al Marketing" },
+    { nombre: "Introducción a las Finanzas", requisitos: ["Contabilidad"] }
   ],
   "6to Semestre": [
-    "Microeconomía II",
-    "Macroeconomía II",
-    "Métodos Cuantitativos II",
-    "Taller de Política Pública",
-    "Libre I",
-    "Electivo de Entorno Social y Científico I"
+    { nombre: "Microeconomía II", requisitos: ["Microeconomía I"] },
+    { nombre: "Macroeconomía II", requisitos: ["Macroeconomía I"] },
+    { nombre: "Métodos Cuantitativos II", requisitos: ["Estadística II"] },
+    { nombre: "Taller de Política Pública", requisitos: ["Economía Aplicada"] },
+    { nombre: "Libre I" },
+    { nombre: "Electivo de Entorno Social y Científico I" }
   ],
   "7mo Semestre": [
-    "Microeconomía III",
-    "Macroeconomía III",
-    "Taller Práctico Profesional/Social I",
-    "Taller Práctico Profesional/Social II",
-    "Libre II",
-    "Electivo de Entorno Social y Científico II"
-  ],
-  "8vo Semestre": [
-    "Microeconomía IV",
-    "Macroeconomía IV",
-    "Electivo de Profundización I",
-    "Electivo de Profundización II",
-    "Electivo de Profundización III",
-    "Libre III",
-    "Tecnología y Sistemas de Información",
-    "Electivo de Negocios para la Economía"
-  ],
-  "9no Semestre": [
-    "Electivo Magíster I / Electivo Profesional I",
-    "Electivo Magíster II / Electivo Profesional II",
-    "Electivo Magíster III / Electivo Profesional III",
-    "Electivo Magíster IV / Electivo Profesional IV",
-    "Electivo Magíster V / Electivo Profesional V"
-  ],
-  "10mo Semestre": [
-    "Práctica Profesional I",
-    "Práctica Profesional II",
-    "Práctica Profesional III",
-    "Práctica Profesional IV",
-    "Taller de Práctica Profesional",
-    "Electivo Magíster X o Electivo Profesional III"
+    { nombre: "Microeconomía III", requisitos: ["Microeconomía II"] },
+    { nombre: "Macroeconomía III", requisitos: ["Macroeconomía II"] },
+    { nombre: "Taller Práctico Profesional/Social I" },
+    { nombre: "Taller Práctico Profesional/Social II" },
+    { nombre: "Libre II" },
+    { nombre: "Electivo de Entorno Social y Científico II" }
   ]
 };
 
 const contenedor = document.getElementById("malla");
+const estado = {};
 
-for (const [semestre, ramos] of Object.entries(malla)) {
-  const columna = document.createElement("div");
-  columna.className = "semestre";
-  columna.innerHTML = `<h2>${semestre}</h2>`;
+function renderMalla() {
+  contenedor.innerHTML = "";
 
-  ramos.forEach(ramo => {
-    const tarjeta = document.createElement("div");
-    tarjeta.className = "ramo";
-    tarjeta.textContent = ramo;
+  for (const [semestre, ramos] of Object.entries(malla)) {
+    const columna = document.createElement("div");
+    columna.className = "semestre";
+    columna.innerHTML = `<h2>${semestre}</h2>`;
 
-    tarjeta.addEventListener("click", () => {
-      tarjeta.classList.toggle("aprobado");
+    ramos.forEach(ramo => {
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "ramo";
+      tarjeta.textContent = ramo.nombre;
+
+      const requisitos = ramo.requisitos || [];
+      const habilitado = requisitos.every(r => estado[r]);
+
+      if (!habilitado && requisitos.length > 0) {
+        tarjeta.classList.add("bloqueado");
+      } else {
+        tarjeta.addEventListener("click", () => {
+          const yaAprobado = tarjeta.classList.contains("aprobado");
+          if (yaAprobado) {
+            tarjeta.classList.remove("aprobado");
+            estado[ramo.nombre] = false;
+          } else {
+            tarjeta.classList.add("aprobado");
+            estado[ramo.nombre] = true;
+          }
+          renderMalla(); // Vuelve a dibujar todo
+        });
+      }
+
+      if (estado[ramo.nombre]) {
+        tarjeta.classList.add("aprobado");
+      }
+
+      columna.appendChild(tarjeta);
     });
 
-    columna.appendChild(tarjeta);
-  });
-
-  contenedor.appendChild(columna);
+    contenedor.appendChild(columna);
+  }
 }
+
+renderMalla();
+
