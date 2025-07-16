@@ -50,3 +50,10 @@ h1 {
   text-decoration: line-through;
   color: #064d00;
 }
+
+.ramo.bloqueado {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
