@@ -51,16 +51,48 @@ const malla = {
     { nombre: "Microeconomía III", requisitos: ["Microeconomía II"] },
     { nombre: "Taller Práctico Profesional/Social I" },
     { nombre: "Taller Práctico Profesional/Social II" }
+  ],
+  "8vo Semestre": [
+    { nombre: "Electivo de Profundización I" },
+    { nombre: "Electivo de Profundización II" },
+    { nombre: "Electivo de Profundización III" },
+    { nombre: "Libre III" },
+    { nombre: "Tecnología y Sistemas de Información" },
+    { nombre: "Electivo de Negocios para la Economía" }
+  ],
+  "Práctica Profesional": [
+    { nombre: "Práctica Profesional I" },
+    { nombre: "Práctica Profesional II" },
+    { nombre: "Práctica Profesional III" },
+    { nombre: "Práctica Profesional IV" },
+    { nombre: "Taller de Práctica Profesional" },
+    { nombre: "Electivo Profesional III" }
+  ],
+  "Magíster": [
+    { nombre: "Electivo Magíster I" },
+    { nombre: "Electivo Magíster II" },
+    { nombre: "Electivo Magíster III" },
+    { nombre: "Electivo Magíster IV" },
+    { nombre: "Electivo Magíster V" },
+    { nombre: "Electivo Magíster X" }
   ]
 };
 
-const contenedor = document.getElementById("malla");
 const estado = {};
+let rutaSeleccionada = null;
 
 function renderMalla() {
+  const contenedor = document.getElementById("malla");
   contenedor.innerHTML = "";
 
   for (const [semestre, ramos] of Object.entries(malla)) {
+    if (
+      semestre === "Práctica Profesional" && rutaSeleccionada !== "practica" ||
+      semestre === "Magíster" && rutaSeleccionada !== "magister"
+    ) {
+      continue;
+    }
+
     const columna = document.createElement("div");
     columna.className = "semestre";
     columna.innerHTML = `<h2>${semestre}</h2>`;
@@ -85,7 +117,10 @@ function renderMalla() {
             tarjeta.classList.add("aprobado");
             estado[ramo.nombre] = true;
           }
-          renderMalla(); // Re-renderiza la malla para actualizar desbloqueos
+          if (semestre === "8vo Semestre") {
+            document.getElementById("opcion-titulacion").style.display = "block";
+          }
+          renderMalla();
         });
       }
 
@@ -100,5 +135,10 @@ function renderMalla() {
   }
 }
 
-renderMalla();
+function elegirTitulacion(ruta) {
+  rutaSeleccionada = ruta;
+  document.getElementById("opcion-titulacion").style.display = "none";
+  renderMalla();
+}
 
+renderMalla();
