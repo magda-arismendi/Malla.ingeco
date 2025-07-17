@@ -1,69 +1,22 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4faff;
-  margin: 0;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  color: #004d66;
-}
-
-.malla-container {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.semestre {
-  background-color: #e6f7ff;
-  border: 2px solid #b3e0ff;
-  border-radius: 10px;
-  padding: 15px;
-  min-width: 250px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-  flex-shrink: 0;
-}
-
-.semestre h2 {
-  text-align: center;
-  color: #0077aa;
-  margin-bottom: 10px;
-}
-
 .ramo {
-  background-color: #cceeff;
+  background-color: #cceeff; /* Celeste claro por defecto */
   padding: 10px;
   margin: 5px 0;
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+  font-weight: bold;
 }
 
 .ramo.aprobado {
-  background-color: #a3d9a5;
-  text-decoration: line-through;
-  color: #064d00;
+  background-color: #3399ff; /* Azul fuerte */
+  color: white;
+  text-decoration: none;
 }
 
 .ramo.bloqueado {
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
-}
-
-button {
-  background-color: #0077aa;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  margin: 10px;
-  cursor: pointer;
-  font-size: 16px;
 }
