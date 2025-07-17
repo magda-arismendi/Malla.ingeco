@@ -1,54 +1,56 @@
 const malla = {
   "1er Semestre": [
-    { nombre: "Int. al Pensamiento Económico y Político" },
+    { nombre: "Aplicaciones de Manejo de Datos" },
     { nombre: "Métodos Matemáticos I" },
     { nombre: "Gestión y Empresa" },
     { nombre: "Introducción a la Economía" },
     { nombre: "Inglés I" }
   ],
   "2do Semestre": [
-    { nombre: "Comunicación I" },
+    { nombre: "Int. al Pensamiento Económico y Político" },
     { nombre: "Métodos Matemáticos II", requisitos: ["Métodos Matemáticos I"] },
+    { nombre: "Introducción a la Gestión de Personas", requisitos:["Gestión y Empresa"] },
     { nombre: "Introducción a la Microeconomía", requisitos: ["Introducción a la Economía"] },
     { nombre: "Inglés II", requisitos: ["Inglés I"] },
-    { nombre: "Contabilidad" }
+    { nombre: "Contabilidad", requisitos:["Gestión y Empresa"] }
   ],
   "3er Semestre": [
     { nombre: "Inglés III", requisitos: ["Inglés II"] },
-    { nombre: "Métodos Matemáticos III", requisitos: ["Métodos Matemáticos II"] },
-    { nombre: "Introducción a la Gestión de Personas" },
-    { nombre: "Aplicaciones de Manejo de Datos" },
-    { nombre: "Introducción a la Macroeconomía", requisitos: ["Introducción a la Economía"] }
+    { nombre: "Métodos Matemáticos III", requisitos: ["Métodos Matemáticos II"] }, 
+    { nombre: "Comunicación I" },
+    { nombre: "Estadística I", requisitos: ["Métodos Matemáticos I","Aplicaciones de Manejo de Datos"] },
+    { nombre: "Introducción al Marketing", requisitos:["Gestión y Empresa"] },
+    { nombre: "Introducción a la Macroeconomía", requisitos: ["Introducción a la Economía","Métodos Matemáticos II"] }
   ],
   "4to Semestre": [
-    { nombre: "Historia Económica" },
-    { nombre: "Comunicación II", requisitos: ["Comunicación I"] },
-    { nombre: "Inglés IV", requisitos: ["Inglés III"] },
-    { nombre: "Métodos Cuantitativos I", requisitos: ["Métodos Matemáticos III"] },
-    { nombre: "Macroeconomía I", requisitos: ["Introducción a la Macroeconomía"] },
-    { nombre: "Microeconomía I", requisitos: ["Introducción a la Microeconomía"] }
+    { nombre: "Tecnología y Sistemas de Información", requisitos:["Introducción a la Gestión de Personas", "Aplicaciones de Manejo de Datos"] },
+    { nombre: "Estadística II", requisitos: ["Estadística I", "Métodos Matemáticos II"] },
+    { nombre: "Métodos Mátematicos IV", requisitos: ["Métodos Matemáticos III"] },
+    { nombre: "Introducción a las Finanzas", requisitos: ["Contabilidad","Métodos Matemáticos II", "Estadística I"] },
+    { nombre: "Economía Aplicada", requisitos: ["Introducción a la Microeconomía","Introducción a la Macroeconomía"] }   
   ],
   "5to Semestre": [
-    { nombre: "Estadística I", requisitos: ["Métodos Cuantitativos I"] },
-    { nombre: "Introducción al Marketing" },
-    { nombre: "Introducción a las Finanzas", requisitos: ["Contabilidad"] },
-    { nombre: "Economía Aplicada", requisitos: ["Microeconomía I"] },
-    { nombre: "Métodos Matemáticos IV", requisitos: ["Métodos Matemáticos III"] },
-    { nombre: "Estadística II", requisitos: ["Estadística I"] }
+    { nombre: "Historia Económica", requisitos:["Introducción a la Macroeconomía","Introducción a la Microeconomía"] },
+    { nombre: "Comunicación II", requisitos: ["Comunicación I"] },
+    { nombre: "Inglés IV", requisitos: ["Inglés III"] },
+    { nombre: "Macroeconomía I", requisitos: ["Introducción a la Macroeconomía","Economía Aplicada"] },
+    { nombre: "Microeconomía I", requisitos: ["Introducción a la Microeconomía","Economía Aplicada"] },
+    { nombre: "Métodos Cuantitativos I", requisitos: ["Estadística II"] }  
   ],
   "6to Semestre": [
     { nombre: "Electivo de Entorno Social y Científico I" },
     { nombre: "Libre I" },
     { nombre: "Macroeconomía II", requisitos: ["Macroeconomía I"] },
     { nombre: "Microeconomía II", requisitos: ["Microeconomía I"] },
-    { nombre: "Métodos Cuantitativos II", requisitos: ["Estadística II"] },
-    { nombre: "Taller de Política Pública", requisitos: ["Economía Aplicada"] }
+    { nombre: "Métodos Cuantitativos II", requisitos: ["Métodos Cuantitativos I"] },
+    { nombre: "Taller de Política Pública", requisitos: ["Economía Aplicada","Comunicación II","Tecnología y Sistemas de Información"] },
+    { nombre: "Electivo de Negocios para la Economía" }
   ],
   "7mo Semestre": [
     { nombre: "Electivo de Entorno Social y Científico II" },
     { nombre: "Libre II" },
-    { nombre: "Macroeconomía III", requisitos: ["Macroeconomía II"] },
-    { nombre: "Microeconomía III", requisitos: ["Microeconomía II"] },
+    { nombre: "Macroeconomía III", requisitos: ["Macroeconomía II","Métodos Cuantitativos I"] },
+    { nombre: "Microeconomía III", requisitos: ["Microeconomía II","Métodos Cuantitativos I"] },
     { nombre: "Taller Práctico Profesional/Social I" },
     { nombre: "Taller Práctico Profesional/Social II" }
   ],
@@ -57,8 +59,8 @@ const malla = {
     { nombre: "Electivo de Profundización II" },
     { nombre: "Electivo de Profundización III" },
     { nombre: "Libre III" },
-    { nombre: "Tecnología y Sistemas de Información" },
-    { nombre: "Electivo de Negocios para la Economía" }
+    { nombre: "Macroeconomía IV", requisitos: ["Macroeconomía II","Taller de Política Pública"] },
+    { nombre: "Microeconomía IV", requisitos: ["Microeconomía II","Taller de Política Pública"] } 
   ],
   "Práctica Profesional": [
     { nombre: "Práctica Profesional I" },
